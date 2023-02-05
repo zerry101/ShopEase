@@ -36,8 +36,8 @@ export class ApiService  {
   // getApiData():Observable<any>{
   //   // return this.http.get('"https://api.pexels.com/v1/search?query=nature&per_page=1"');
   // }
-search:String='nature';
-perPage:number=1;
+search!:String;
+perPage!:number;
 
 
 getPexelData(search:undefined,perPage:undefined):Observable<any>{
