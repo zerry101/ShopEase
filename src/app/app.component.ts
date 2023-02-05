@@ -29,8 +29,8 @@ export class AppComponent implements  OnInit  {
   pictureData:any;
   getData(){
     this.apiData.getPexelData(this.search,this.perPage).subscribe(res=>{
-      console.log(res.photos[0].url);
-      this.pictureData=res.photos[0].url;
+      console.log(res);
+      this.pictureData=res.photos[0].src.medium;
 
     },(error)=>{console.log(error);
     })
