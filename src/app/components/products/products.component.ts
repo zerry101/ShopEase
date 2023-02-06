@@ -32,6 +32,8 @@ export class ProductsComponent implements OnInit {
               return data;
             })
             console.log(this.pictureData);
+            console.log(res);
+
           },
           error: (error) => {
             console.log(error);
