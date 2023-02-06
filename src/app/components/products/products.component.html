@@ -30,3 +30,54 @@
     </div>
   </div>
 </div>
+
+
+
+
+<div>
+
+</div>
+
+<div class="conatiner">
+  <div class="row col d-flex justify-content-center">
+    <ng-container *ngFor="let item of pictureData">
+      <!-- <div class="card col-md-3 m-2">
+        <img style="margin: auto;object-fit:cover;   object-position:50% 50%;
+        " src="{{item.src.small}}" alt="">
+        <h5 style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;max-width: 100ch;"> {{item.alt}}
+        </h5>
+        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;max-width: 100ch;">
+          <strong>Price:</strong>${{item.photographer_id}}
+        </p>
+        <!-- <p></p>
+        <p></p> -->
+      <!-- <button class="btn btn-primary">Add to Cart</button> -->
+      <!-- </div>  -->
+
+      <div class="card m-2 p-0 overflow-hidden" style="width: 18rem;">
+        <div class="product-img">
+          <img class="card-img-top" src="{{item.src.original}}" height="200" width="20"
+            alt="Card image cap">
+        </div>
+        <div class="card-body">
+          <p class="card-text " style="overflow: hidden; white-space: nowrap;">{{item.alt}}</p>
+          <p class="card-text"> <strong>Price:</strong>${{item.photographer_id}}
+          </p>
+          <p></p>
+          <div class=" d-flex justify-content-between align-items-center">
+            <button class="card-text btn btn-primary">Add to Cart <i class="bi bi-bag"></i></button>
+            <button class="border border-primary btn btn-light" (click)="toggleFavorite(item)">
+              <i [ngClass]="!item.addedToFavourite ? 'bi bi-heart' : 'bi bi-heart-fill'"></i> </button>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+<!-- <div *ngFor="let item of pictureData"> -->
+
+<h1>
+</h1>
+<!-- </div> -->

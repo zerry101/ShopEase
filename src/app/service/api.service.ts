@@ -22,20 +22,7 @@ const httpOptions={
 export class ApiService  {
 
   constructor(public http:HttpClient) {}
-  // intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-  //   // throw new Error('Method not implemented.');
-  //     req=req.clone({
-  //       setHeaders:{
-  //         Authorization:'Qjc8ocjT7EKYJKZUYKNEprkE1m3JPQdV0ftZ9Nk1xaq6sxRK35WfkeBK'
-  //       }
-  //     });
 
-  //     return next.handle(req);
-  // }
-
-  // getApiData():Observable<any>{
-  //   // return this.http.get('"https://api.pexels.com/v1/search?query=nature&per_page=1"');
-  // }
 search!:String;
 perPage!:number;
 

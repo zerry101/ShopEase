@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Observable } from 'rxjs';
-import { ApiService } from './service/api.service';
 
 @Component({
   selector: 'app-root',
@@ -13,11 +12,9 @@ export class AppComponent implements  OnInit  {
   search:any='nature';
   perPage:any=1;
 
-  constructor(private modalService: NgbModal,public apiData:ApiService) {
-    this.apiData.getPexelData(this.search,this.perPage);
+  constructor(private modalService: NgbModal) {
   }
   ngOnInit(): void {
-    this.getData();
   }
 
   public open(modal: any): void {
@@ -26,15 +23,6 @@ export class AppComponent implements  OnInit  {
 
   // data:any;
 
-  pictureData:any;
-  getData(){
-    this.apiData.getPexelData(this.search,this.perPage).subscribe(res=>{
-      console.log(res);
-      this.pictureData=res.photos[0].src.medium;
 
-    },(error)=>{console.log(error);
-    })
-    }
-  // }
 
 }

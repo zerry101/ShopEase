@@ -1,19 +1,32 @@
-.card-top
-{
-position: relative;
-display:flex;
-flex-direction: column;
-min-width: 0;
-word-wrap: break-word;
-background:#FFF;
-background-clip: border-box;
-border: 1px solid black;
-border-radius: .25rem;
-}
-.item{
-  text-align: center;
-}
-.item a:hover{
-  color: blue;
-}
+:host {
+  .card-top {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background: #fff;
+    background-clip: border-box;
+    border: 1px solid black;
+    border-radius: 0.25rem;
+    object-fit: cover;
+  }
 
+  .item {
+    text-align: center;
+
+    a:hover {
+      color: blue;
+    }
+  }
+
+  .product-img {
+    margin-bottom: auto;
+    transition: 0.3s ease;
+
+    &:hover {
+      transition: 0.3s ease;
+      transform: scale(1.05);
+    }
+  }
+}
