@@ -14,6 +14,7 @@ export class ProductsComponent implements OnInit {
   perPage: any = 9;
 
   addToCartSwitch:boolean=false;
+// elseBlock: TemplateRef<NgIfContext<any>>|null;
 
   constructor(public apiData: ApiService) {
   }
