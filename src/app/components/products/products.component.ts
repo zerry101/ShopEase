@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { debounceTime } from 'rxjs';
+import { debounceTime, retry } from 'rxjs';
 import { ApiService } from '../../service/api.service';
 
 
@@ -13,6 +13,8 @@ export class ProductsComponent implements OnInit {
   search: any = 'devices';
   perPage: any = 9;
 
+  addToCartSwitch:boolean=false;
+
   constructor(public apiData: ApiService) {
   }
 
@@ -20,6 +22,8 @@ export class ProductsComponent implements OnInit {
     this.apiData.getPexelData(this.search, this.perPage);
     this.getData();
   }
+
+
 
   private getData() {
     this.apiData.getPexelData(this.search, this.perPage)
@@ -29,12 +33,14 @@ export class ProductsComponent implements OnInit {
           next: (res) => {
             this.pictureData = res.photos.map((data: any) => {
               data.addedToFavourite = true;
+              data.addToCartSwitch=true
               return data;
             })
             console.log(this.pictureData);
             console.log(res);
 
           },
+
           error: (error) => {
             console.log(error);
           }
@@ -45,5 +51,13 @@ export class ProductsComponent implements OnInit {
   public toggleFavorite(item: any) {
     item.addedToFavourite = !item.addedToFavourite;
     return item.addedToFavourite;
+  }
+
+
+  public addToCart(item:any){
+    item.addToCartSwitch=!item.addToCartSwitch;
+    // console.log(item.addToCartSwitch);
+    return item.addToCartSwitch;
+
   }
 }

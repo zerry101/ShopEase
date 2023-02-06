@@ -65,9 +65,11 @@
           </p>
           <p></p>
           <div class=" d-flex justify-content-between align-items-center">
-            <button class="card-text btn btn-primary">Add to Cart <i class="bi bi-bag"></i></button>
+            <button class="card-text btn btn-primary" (click)="addToCart(item)">
+               <span *ngIf="item.addToCartSwitch" >Add to Cart </span>
+               <i class="bi bi-bag"></i></button>
             <button class="border border-primary btn btn-light" (click)="toggleFavorite(item)">
-              <i [ngClass]="!item.addedToFavourite ? 'bi bi-heart' : 'bi bi-heart-fill'"></i> </button>
+              <i [ngClass]="item.addedToFavourite ? 'bi bi-heart' : 'bi bi-heart-fill'"></i> </button>
           </div>
         </div>
       </div>
