@@ -31,58 +31,79 @@
   </div>
 </div>
 
-
-
-
-<div>
-
-</div>
-
-<div class="conatiner" style="overflow-x: hidden;overflow-y: hidden
-">
-  <div class="row col d-flex justify-content-center">
-    <ng-container *ngFor="let item of pictureData">
-      <!-- <div class="card col-md-3 m-2">
-        <img style="margin: auto;object-fit:cover;   object-position:50% 50%;
-        " src="{{item.src.small}}" alt="">
-        <h5 style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;max-width: 100ch;"> {{item.alt}}
-        </h5>
-        <p style="overflow: hidden;white-space: nowrap;text-overflow: ellipsis;max-width: 100ch;">
-          <strong>Price:</strong>${{item.photographer_id}}
-        </p>
-        <!-- <p></p>
-        <p></p> -->
-      <!-- <button class="btn btn-primary">Add to Cart</button> -->
-      <!-- </div>  -->
-
-      <div class="card m-2 p-0 overflow-hidden" style="width: 18rem;">
-        <div class="product-img">
-          <img class="card-img-top" src="{{item.src.original}}" height="200" width="20" alt="Card image cap">
-        </div>
-        <div class="card-body">
-          <p class="card-text " style="overflow: hidden; white-space: nowrap;">{{item.alt}}</p>
-          <p class="card-text"> <strong>Price:</strong>${{item.photographer_id}}
-          </p>
-          <p></p>
-          <div class=" d-flex justify-content-between align-items-center">
-            <button class="card-text btn btn-primary" (click)="addToCart(item)">
-              <span *ngIf="item.addToCartSwitch; else elseBlock">Add to Cart <i class="bi bi-bag"></i></span>
-              <ng-template #elseBlock>
-                <button type="button" class="btn-close btn-close-white mx-auto" aria-label="Close"></button>
-              </ng-template>
-            </button>
-            <button class="border border-primary btn btn-light" (click)="toggleFavorite(item)">
-              <i [ngClass]="item.addedToFavourite ? 'bi bi-heart' : 'bi bi-heart-fill'"></i> </button>
+<div class="conatiner" style="overflow-x: hidden;">
+  <div class="row col d-flex justify-content-center" *ngIf="!loading">
+      <ng-container *ngFor="let item of pictureData">
+        <div class="card m-2 p-0 overflow-hidden" style="width: 18rem;">
+          <div class="product-img">
+            <img *ngIf="item.src.original" class="card-img-top" src="{{item.src.original}}" height="200" width="20"
+              alt="Card image cap">
+          </div>
+          <div class="card-body">
+            <p class="card-text " style="overflow: hidden; white-space: nowrap;">{{item.alt}}</p>
+            <p class="card-text"> <strong>Price:</strong>${{item.photographer_id}}
+            </p>
+            <p></p>
+            <div class=" d-flex justify-content-between align-items-center">
+              <button class="card-text btn" [ngClass]="item.addedToCart ? 'btn-outline-primary' : 'btn-primary'"
+                (click)="addToCart(item)">
+                {{item.addedToCart ? 'Remove From' : 'Add to'}} <i class="bi bi-cart"></i>
+              </button>
+              <button class="border border-primary btn btn-light" (click)="toggleFavorite(item)">
+                <i [ngClass]="item.addedToFavourite ? 'bi bi-heart-fill' : 'bi bi-heart'"></i> </button>
+            </div>
           </div>
         </div>
+      </ng-container>
+  </div>
+  <div class="row col d-flex justify-content-center" *ngIf="loading">
+    <div class="card m-2" style="width: 18rem;">
+      <div class="placeholder" style="height:200px"></div>
+      <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+          <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+          <span class="placeholder col-7"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-6"></span>
+          <span class="placeholder col-8"></span>
+        </p>
+        <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
       </div>
-    </ng-container>
+    </div>
+    <div class="card m-2" style="width: 18rem;">
+      <div class="placeholder" style="height:200px"></div>
+      <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+          <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+          <span class="placeholder col-7"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-6"></span>
+          <span class="placeholder col-8"></span>
+        </p>
+        <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+      </div>
+    </div>
+    <div class="card m-2" style="width: 18rem;">
+      <div class="placeholder" style="height:200px"></div>
+      <div class="card-body">
+        <h5 class="card-title placeholder-glow">
+          <span class="placeholder col-6"></span>
+        </h5>
+        <p class="card-text placeholder-glow">
+          <span class="placeholder col-7"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-4"></span>
+          <span class="placeholder col-6"></span>
+          <span class="placeholder col-8"></span>
+        </p>
+        <a href="#" tabindex="-1" class="btn btn-primary disabled placeholder col-6"></a>
+      </div>
+    </div>
   </div>
 </div>
-
-
-<!-- <div *ngFor="let item of pictureData"> -->
-
-<h1>
-</h1>
-<!-- </div> -->

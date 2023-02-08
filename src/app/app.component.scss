@@ -1,0 +1,25 @@
+.form-control {
+  border-radius: 3px;
+  width: 600px;
+  margin-left: 20px;
+}
+
+.bi-search {
+  position: absolute;
+  z-index: 10;
+  right: 30.5%;
+  top: 35%;
+  color: blue;
+}
+
+.bi-bag-fill {
+  font-size: 30px;
+  color: azure;
+  padding-right: 1%;
+  padding-left: 1%;
+}
+
+
+mat-drawer{
+  width: 450px;
+}

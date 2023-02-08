@@ -9,12 +9,11 @@ import { ApiService } from '../../service/api.service';
   styleUrls: ['./products.component.scss']
 })
 export class ProductsComponent implements OnInit {
-  pictureData: any;
+  pictureData: Array<any> = [];
   search: any = 'devices';
   perPage: any = 9;
-
-  addToCartSwitch:boolean=false;
-// elseBlock: TemplateRef<NgIfContext<any>>|null;
+  loading = true;
+  addToCartSwitch: boolean = false;
 
   constructor(public apiData: ApiService) {
   }
@@ -24,25 +23,24 @@ export class ProductsComponent implements OnInit {
     this.getData();
   }
 
-
-
   private getData() {
+    this.loading = true;
     this.apiData.getPexelData(this.search, this.perPage)
-      .pipe(debounceTime(5000))
       .subscribe(
         {
           next: (res) => {
+            this.loading = false;
             this.pictureData = res.photos.map((data: any) => {
-              data.addedToFavourite = true;
-              data.addToCartSwitch=true
+              data.addedToFavourite = false;
+              data.addedToCart = false
               return data;
             })
             console.log(this.pictureData);
             console.log(res);
-
           },
 
           error: (error) => {
+            this.loading = false;
             console.log(error);
           }
         }
@@ -51,14 +49,16 @@ export class ProductsComponent implements OnInit {
 
   public toggleFavorite(item: any) {
     item.addedToFavourite = !item.addedToFavourite;
+
+    let data = this.pictureData
     return item.addedToFavourite;
   }
 
 
-  public addToCart(item:any){
-    item.addToCartSwitch=!item.addToCartSwitch;
+  public addToCart(item: any) {
+    item.addedToCart = !item.addedToCart;
     // console.log(item.addToCartSwitch);
-    return item.addToCartSwitch;
+    return item.addedToCart;
 
   }
 }
