@@ -12,7 +12,7 @@ export class ProductsComponent implements OnInit {
   pictureData: Array<any> = [];
   search: any = 'devices';
   perPage: any = 9;
-  loading = true;
+  loading = true
   addToCartSwitch: boolean = false;
 
   constructor(public apiData: ApiService) {
@@ -29,10 +29,11 @@ export class ProductsComponent implements OnInit {
       .subscribe(
         {
           next: (res) => {
+            console.log(res);
             this.loading = false;
             this.pictureData = res.photos.map((data: any) => {
               data.addedToFavourite = false;
-              data.addedToCart = false
+              data.addedToCart = false;
               return data;
             })
             console.log(this.pictureData);
