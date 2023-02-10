@@ -14,13 +14,13 @@
           </thead>
           <tbody >
 
-              <tr *ngFor="let item of sharedData.userCart">
+              <tr *ngFor="let item of sharedData.userCart;index as i" >
                 <td>{{item.name}}</td>
                 <td>{{item.price}}</td>
                 <td>{{item.addedToFavourite}}</td>
                 <td>{{item.addedToCart}}</td>
                 <td>
-                  <button class="btn btn-danger" (click)="removeItem()">
+                  <button class="btn btn-danger" (click)="removeItem(i,item)">
                     <i class="bi bi-trash3-fill"></i>
                   </button>
                 </td>
@@ -33,6 +33,17 @@
               <td></td>
               <td></td>
               <td>$55</td>
+
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td>
+                <button class="btn btn-danger" (click)="removeAll()">
+                  Empty <i class="bi bi-cart2"></i>
+                </button>
+              </td>
 
             </tr>
           </tbody>

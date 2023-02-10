@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { ShareDataService } from 'src/app/service/share-data.service';
 import { userCart } from 'src/app/service/share-data.service';
 // import {pictureData}
@@ -12,12 +12,17 @@ export class CartComponent implements userCart {
   // @Input() myinputMsg:string;
 
 
+  dataIndex:number | undefined;
 
 
   constructor(public sharedData:ShareDataService){
     // console.log(sharedData);
 
   }
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   // throw new Error('Method not implemented.');
+
+  // }
   productName: any;
   // productName: any;
   addedToFavourite: boolean | undefined;
@@ -32,10 +37,21 @@ export class CartComponent implements userCart {
 
   // console.log();
 
-  removeItem(): void{
-// this.sharedData.userCart.addedToProductCart=false;
-// console.log(this.sharedData.userCart);
+  removeItem(index:number,item:any){
+// this.sharedData.userCart.addedToCart=false ;
+console.log(this.sharedData.userCart);
+this.sharedData.userCart[index].addedToCart=false;
+this.sharedData.userCart.splice(index,1);
 
+console.log(this.sharedData.userCart[index]);
+
+
+
+  }
+
+
+  removeAll(){
+this.sharedData.userCart.splice(0,this.sharedData.userCart.length)
   }
 
 }
