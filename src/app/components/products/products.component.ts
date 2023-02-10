@@ -9,7 +9,7 @@ import { ShareDataService, userCart } from 'src/app/service/share-data.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit{
+export class ProductsComponent implements OnInit {
   public pictureData: Array<any> = [];
   public productData: Array<any> | undefined;
 
@@ -79,7 +79,18 @@ export class ProductsComponent implements OnInit{
   public addToCart(item: any) {
     item.addedToCart = !item.addedToCart;
 
-    this.sharedData.userCart.push(item);
+    item.addedToCart ? this.sharedData.userCart.push(item) : this.sharedData.userCart.splice(this.sharedData.userCart.indexOf(item), 1);
+
+
+    // if (item.addedToCart == true) {
+    //   this.sharedData.userCart.push(item);
+    // }
+    // else {
+    //   this.sharedData.userCart.splice(this.sharedData.userCart.indexOf(item), 1)
+    //   // console.log("indexofitem"+this.sharedData.userCart.indexOf(item));
+
+    // }
+
 
     // this.sharedData.userCart!.productName = item.alt;
     // this.sharedData.userCart!.addedToFavouriteProduct = item.addedToFavourite;
