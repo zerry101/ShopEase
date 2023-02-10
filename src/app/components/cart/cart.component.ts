@@ -1,21 +1,25 @@
-import { Component, OnChanges, SimpleChanges } from '@angular/core';
+// import { ChangeDetectionStrategy } from '@angular/compiler';
+import { Component } from '@angular/core';
 import { ShareDataService } from 'src/app/service/share-data.service';
 import { userCart } from 'src/app/service/share-data.service';
 // import {pictureData}
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.scss']
+  styleUrls: ['./cart.component.scss'],
+  // changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CartComponent implements userCart {
 
   // @Input() myinputMsg:string;
 
 
-  dataIndex:number | undefined;
+  dataIndex: number | undefined;
 
+  // totalPrice!:any;
+  totalPrice: Number | undefined;
 
-  constructor(public sharedData:ShareDataService){
+  constructor(public sharedData: ShareDataService) {
     // console.log(sharedData);
 
   }
@@ -37,21 +41,42 @@ export class CartComponent implements userCart {
 
   // console.log();
 
-  removeItem(index:number,item:any){
-// this.sharedData.userCart.addedToCart=false ;
-console.log(this.sharedData.userCart);
-this.sharedData.userCart[index].addedToCart=false;
-this.sharedData.userCart.splice(index,1);
+  removeItem(index: number, item: any) {
+    // this.sharedData.userCart.addedToCart=false ;
+    console.log(this.sharedData.userCart);
+    this.sharedData.userCart[index].addedToCart = false;
+    this.sharedData.userCart.splice(index, 1);
 
-console.log(this.sharedData.userCart[index]);
+    console.log(this.sharedData.userCart[index]);
+
+    // console.log(this.totalPrice);
 
 
 
   }
 
 
-  removeAll(){
-this.sharedData.userCart.splice(0,this.sharedData.userCart.length)
+  removeAll() {
+    this.sharedData.userCart.forEach(data => data.addedToCart = false);
+    this.sharedData.userCart.splice(0, this.sharedData.userCart.length);
+
   }
+
+  total(data:any){
+
+    this.totalPrice = data.reduce((acc: any, item: any) => {
+      console.log(acc);
+      return acc + item.price;
+
+    }, 0);
+
+    return this.totalPrice;
+  }
+
+
+
+
+
+
 
 }
