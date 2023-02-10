@@ -17,7 +17,7 @@ export class CartComponent implements userCart {
   dataIndex: number | undefined;
 
   // totalPrice!:any;
-  totalPrice: Number | undefined;
+  // totalPrice: Number | undefined;
 
   constructor(public sharedData: ShareDataService) {
     // console.log(sharedData);
@@ -64,13 +64,13 @@ export class CartComponent implements userCart {
 
   total(data:any){
 
-    this.totalPrice = data.reduce((acc: any, item: any) => {
+    let totalPrice = data.reduce((acc: any, item: any) => {
       console.log(acc);
       return acc + item.price;
 
     }, 0);
 
-    return this.totalPrice;
+    return totalPrice;
   }
 
 
