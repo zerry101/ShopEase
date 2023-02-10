@@ -12,25 +12,29 @@ export class CartComponent implements userCart {
   // @Input() myinputMsg:string;
 
 
-  addedToFavouriteProduct: boolean | undefined;
-  addedToProductCart: boolean | undefined;
-  productPrice: number | undefined;
-  productName: String | undefined;
-  // sharedData: any;
+
 
   constructor(public sharedData:ShareDataService){
     // console.log(sharedData);
 
   }
+  productName: any;
+  // productName: any;
+  addedToFavourite: boolean | undefined;
+  addedToProductCart: boolean | undefined;
+  image: String | undefined;
+  addedToCart: Boolean | undefined;
+  price: number | undefined;
+  name: String | undefined;
 
   // prodPrice:number|undefined=this.sharedData.userCart.productPrice;
 
 
   // console.log();
 
-  removeItem(){
+  removeItem(): void{
 // this.sharedData.userCart.addedToProductCart=false;
-// console.log(pictureData);
+// console.log(this.sharedData.userCart);
 
   }
 

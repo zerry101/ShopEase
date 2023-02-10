@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { debounceTime, retry } from 'rxjs';
 import { ApiService } from '../../service/api.service';
-import { ShareDataService } from 'src/app/service/share-data.service';
+import { ShareDataService, userCart } from 'src/app/service/share-data.service';
 // import { userCart } from 'src/app/service/share-data.service';
 
 @Component({
@@ -9,27 +9,32 @@ import { ShareDataService } from 'src/app/service/share-data.service';
   templateUrl: './products.component.html',
   styleUrls: ['./products.component.scss']
 })
-export class ProductsComponent implements OnInit {
+export class ProductsComponent implements OnInit{
   public pictureData: Array<any> = [];
-  public productData:Array<any> | undefined;
+  public productData: Array<any> | undefined;
 
   search: any = 'devices';
   perPage: any = 9;
   loading = true
   addToCartSwitch: boolean = false;
 
-  constructor(public apiData: ApiService,public sharedData:ShareDataService) {
+  constructor(public apiData: ApiService, public sharedData: ShareDataService) {
   }
-  addedToFavouriteProduct: boolean | undefined;
-  addedToProductCart: boolean | undefined;
-  productPrice: number | undefined;
-  productName: String | undefined;
+
+  // public userCart: userCart[] | undefined;
+  // addedToCart: any;
+  // // public userCart: userCart[] | undefined;
+  // addedToFavouriteProduct: boolean | undefined;
+  // addedToProductCart: boolean | undefined;
+  // productPrice: number | undefined;
+  // productName: String | undefined;
 
 
 
   ngOnInit(): void {
     this.apiData.getPexelData(this.search, this.perPage);
     this.getData();
+    // this.sharedData.userCart=this.pictureData;
   }
 
   private getData() {
@@ -44,10 +49,10 @@ export class ProductsComponent implements OnInit {
               data.addedToFavourite = false;
               data.addedToCart = false;
 
-              return {addedToFavourite:data.addedToFavourite,image:data.src.original,name:data.alt,price:data.photographer_id,addedToCart:data.addedToCart};
+              return { addedToFavourite: data.addedToFavourite, image: data.src.original, name: data.alt, price: data.photographer_id, addedToCart: data.addedToCart };
             })
             console.log(this.pictureData);
-            console.log(this.pictureData[0][1]);
+            // console.log(this.pictureData[0][1]);
             // console.log(this.pictureData);
 
             // console.log(res);
@@ -74,15 +79,16 @@ export class ProductsComponent implements OnInit {
   public addToCart(item: any) {
     item.addedToCart = !item.addedToCart;
 
-    this.sharedData.userCart!.productPrice=item.photographer_id;
-    this.sharedData.userCart!.productName=item.alt;
-    this.sharedData.userCart!.addedToFavouriteProduct=item.addedToFavourite;
-    this.sharedData.userCart!.addedToProductCart=item.addedToCart;
+    this.sharedData.userCart.push(item);
+
+    // this.sharedData.userCart!.productName = item.alt;
+    // this.sharedData.userCart!.addedToFavouriteProduct = item.addedToFavourite;
+    // this.sharedData.userCart!.addedToProductCart = item.addedToCart;
 
     // item.addedToCart=this.sharedData.userCart!.addedToProductCart
 
 
-    console.log(this.sharedData.userCart!);
+    console.log(this.sharedData.userCart);
 
     // console.log(this.sharedData.userCart!.productPrice);
 
@@ -92,6 +98,12 @@ export class ProductsComponent implements OnInit {
 
   }
 
+  // ngOnChanges(changes: SimpleChanges): void {
+  //   // throw new Error('Method not implemented.');
+  //   console.log(changes);
+
+
+  // }
 
 
 }
