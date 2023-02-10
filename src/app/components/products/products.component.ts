@@ -13,7 +13,7 @@ export class ProductsComponent implements OnInit {
   public pictureData: Array<any> = [];
   public productData: Array<any> | undefined;
 
-  search: any = 'devices';
+  search: any = 'Cars';
   perPage: any = 9;
   loading = true
   addToCartSwitch: boolean = false;
