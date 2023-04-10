@@ -1,7 +1,6 @@
 import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
-import { debounceTime, retry } from 'rxjs';
 import { ApiService } from '../../service/api.service';
-import { ShareDataService, userCart } from 'src/app/service/share-data.service';
+import { ShareDataService } from 'src/app/service/share-data.service';
 // import { userCart } from 'src/app/service/share-data.service';
 
 @Component({
@@ -13,7 +12,7 @@ export class ProductsComponent implements OnInit {
   public pictureData: Array<any> = [];
   public productData: Array<any> | undefined;
 
-  search: any = 'Cars';
+  search: any = 'cat';
   perPage: any = 9;
   loading = true
   addToCartSwitch: boolean = false;

@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 
 export interface userCart
 {
+ productName: any;
   addedToFavourite:boolean|undefined;
   addedToProductCart:boolean|undefined;
   image:String|undefined;
@@ -24,6 +25,8 @@ export class ShareDataService {
   constructor() { }
 
 public  userCart:userCart[]=[];
+
+
 
 
 }
